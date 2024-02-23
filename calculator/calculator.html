@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY CALCULATOR</title>
+    <link rel="stylesheet" href="calculator.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="show"><input style="height: 20vh; font-size: 23px; padding-left:10px ; " id="display" type="text"
+                readonly></div>
+        <div class="cal">
+            <button id="op" class="clear-btn" onclick="clearDisplay()">C</button>
+            <button class="btn" onclick="appendToDisplay('/')" id="op">/</button>
+            <button class="btn" onclick="appendToDisplay('*')" id="op">*</button>
+            <button class="btn" onclick="backspace()" id="op">←</button>
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn" onclick="appendToDisplay('-')" id="op">-</button>
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn" onclick="appendToDisplay('+')" id="op">+</button>
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="eql-btn" onclick="calculate()" id="op">=</button>
+            <button class="btn" onclick="appendToDisplay('00')">00</button>
+            <button class="btn" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+        </div>
+
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function backspace() {
+            var displayValue = document.getElementById('display').value;
+            document.getElementById('display').value = displayValue.slice(0, -1); // Remove the last character
+        }
+
+        function calculate() {
+            var displayValue = document.getElementById('display').value;
+            var result;
+            try {
+                result = eval(displayValue);
+            } catch (error) {
+                result = 'Error';
+            }
+            document.getElementById('display').value = result;
+        }
+    </script>
+
+    
+
+</body>
+
+</html>
